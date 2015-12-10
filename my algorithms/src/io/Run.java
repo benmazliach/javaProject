@@ -21,7 +21,7 @@ public class Run {
 			MyCompressorOutputStream Cout = null;
 			Cout = new MyCompressorOutputStream(out);
 			try {
-				Cout.write("1115500000142233".getBytes());
+				Cout.write("1111111000001111111111111100".getBytes());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -51,7 +51,9 @@ public class Run {
 			MyDecompressorInputStream Cin = null;
 			Cin = new MyDecompressorInputStream(in);
 			try {
-				Cin.read();
+				int num = 0;
+				while((num = Cin.read())!=-1)
+					System.out.println(num);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

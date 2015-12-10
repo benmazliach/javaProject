@@ -13,30 +13,26 @@ public class MyDecompressorInputStream extends InputStream{
 	}
 	
 	@Override
-	public int read(byte[] b) throws IOException{
-		int num = super.read(b);
-		System.out.println(num);
-		/*byte[] temp = new byte[10];
-		if(num==-1)
-			return -1;
-		for(int i=0;i<b.length;i++)
-		{
-			
-		}*/
-		return 0;
-	}
-	
-	@Override
 	public int read() throws IOException {
 		int num = 0;
-		if((num=in.read())!=-1)
+		int temp = in.read();
+		int i=1;
+		while(temp!=-1)
+		{
+			if(temp>='0' &&temp<='9')
+			{
+				num = num * i + (temp-48);//48('0')<=temp<=57('9')
+				i = i*10;
+				temp = in.read();
+			}
+			else
+			{
+				return num;
+			}
+		}
+		if(num!=0)
 			return num;
 		return -1;
-		
-		/*if((num=in.read())!=-1 && (num>=0 && num<65535))
-		{
-			return num;
-		}*/
 	}
 
 	public InputStream getIn() {
