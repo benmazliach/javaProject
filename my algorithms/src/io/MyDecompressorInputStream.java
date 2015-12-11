@@ -7,6 +7,9 @@ import java.util.ArrayList;
 public class MyDecompressorInputStream extends InputStream{
 
 	private InputStream in;
+	
+	//check if we need to remove 
+	//if true remove readFile
 	private byte[] arrayByte;
 	
 	public MyDecompressorInputStream(InputStream in) {

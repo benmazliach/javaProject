@@ -1,5 +1,6 @@
 package algorithms.mazeGenerators;
 
+import java.util.ArrayList;
 
 /**
 *<h1>  Maze3d class <h1>
@@ -363,6 +364,7 @@ public class Maze3d{
 	
 	public byte[] toByteArray()
 	{
+		/*
 		int size = getXSize() * getYSize() * getZSize() + 9;
 		byte[] temp = new byte[size];
 		//start position
@@ -391,6 +393,50 @@ public class Maze3d{
 			}
 		}
 		return temp;
+		*/
+		ArrayList<Byte> byteMaze = new ArrayList<Byte>();
+		
+		byteMaze.add((new Integer(this.getStartPosition().getpX()).byteValue()));
+		byteMaze.add((new Integer(this.getStartPosition().getpY()).byteValue()));
+		byteMaze.add((new Integer(this.getStartPosition().getpZ()).byteValue()));
+		
+		byteMaze.add((new Integer(this.getGoalPosition().getpX()).byteValue()));
+		byteMaze.add((new Integer(this.getGoalPosition().getpY()).byteValue()));
+		byteMaze.add((new Integer(this.getGoalPosition().getpZ()).byteValue()));
+		
+		byteMaze.add((new Integer(this.maze[0][0].length).byteValue()));//x
+		byteMaze.add((new Integer(this.maze.length).byteValue()));//y
+		byteMaze.add((new Integer(this.maze[0].length).byteValue()));//z
+		
+		for (int i = 0; i < maze.length; i++) {
+			for (int j = 0; j < maze[0].length; j++) {
+				for (int k = 0; k < maze[0][0].length; k++) {
+					byteMaze.add((new Integer(this.maze[i][j][k]).byteValue()));					
+				}
+			}
+		}
+		
+		byte[] CommpressedMaze = new byte[byteMaze.size()];
+		
+		for (int i = 0; i < byteMaze.size(); i++) {
+			CommpressedMaze[i] = byteMaze.get(i);
+		}
+		
+		return CommpressedMaze;
+	}
+	
+	public boolean equals(Maze3d m) {
+		if(this.getXSize()!=m.getXSize()||this.getYSize()!=m.getYSize()||this.getZSize()!=m.getZSize())
+			return false;
+		for (int i = 0; i < this.getYSize(); i++) {
+			for (int j = 0; j < this.getZSize(); j++) {
+				for (int k = 0; k < this.getXSize(); k++) {
+					if(this.returnValue(k, i, j)!=m.returnValue(k, i, j))
+						return false;
+				}
+			}
+		}
+		return true;
 	}
 	
 }

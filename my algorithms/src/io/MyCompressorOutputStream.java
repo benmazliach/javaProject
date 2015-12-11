@@ -2,6 +2,7 @@ package io;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class MyCompressorOutputStream extends OutputStream{
 
@@ -17,7 +18,7 @@ public class MyCompressorOutputStream extends OutputStream{
 	public void write(byte[] b) throws IOException
 	{
 		this.count = 0;
-		int temp = -1;
+		Integer temp = -1;
 		if(b.length==1)
 		{
 			this.write(b[0]);
@@ -30,10 +31,10 @@ public class MyCompressorOutputStream extends OutputStream{
 				{
 					if(temp!=-1)
 					{
-						this.write(temp);
+						this.write(temp.byteValue());
 						out.write(",".getBytes());
 					}
-					temp=b[i];
+					temp=(int) b[i];
 					count=1;
 				}
 				else
@@ -41,7 +42,7 @@ public class MyCompressorOutputStream extends OutputStream{
 					count++;
 				}
 				if(i+1==b.length)
-					this.write(temp);
+					this.write(temp.byteValue());
 			}
 			this.count = 1;
 		}
@@ -49,7 +50,16 @@ public class MyCompressorOutputStream extends OutputStream{
 	
 	@Override
 	public void write(int b) throws IOException {
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		while(b>=10)
+		{
+			int g = b%10;
+			temp.add(g);
+			b/=10;
+		}
 		out.write(b+48);
+		for(int i = temp.size()-1;i>=0;i--)
+			out.write(temp.get(i)+48);
 		out.write(",".getBytes());
 		out.write(count.toString().getBytes());
 	}

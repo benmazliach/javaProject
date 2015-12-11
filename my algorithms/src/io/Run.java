@@ -81,15 +81,16 @@ public class Run {
 			
 			char c = '0';
 			byte x = (byte)c;
-			System.out.println((int)x);*/
+			System.out.println((int)x);
 			
-			MyMaze3dGenerator m = new MyMaze3dGenerator(3, 1, 3);
+			*/
+			
+			MyMaze3dGenerator m = new MyMaze3dGenerator(10, 1, 3);
 			// save it to a file   
 			OutputStream out = null;
 			try {
 				out = new MyCompressorOutputStream( new FileOutputStream("1.maz"));
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			try {
@@ -97,14 +98,12 @@ public class Run {
 				out.flush();   
 				out.close(); 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}     
+			}
 			InputStream in = null;
 			try {
 				in = new MyDecompressorInputStream( new FileInputStream("1.maz"));
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}   
 			byte b[]=new byte[m.getMaze().toByteArray().length];   
@@ -112,15 +111,11 @@ public class Run {
 				in.read(b);
 				in.close(); 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}   
-			 
+			}
 			Maze3d loaded=new Maze3d(b);     
 			System.out.println(loaded.equals(m.getMaze())); 
-			
-			
-			
+		
 			
 			
 		}
