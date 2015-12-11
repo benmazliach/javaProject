@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import algorithms.mazeGenerators.Maze3d;
+import algorithms.mazeGenerators.MyMaze3dGenerator;
+
 public class Run {
 		
 		public static void main(String[] args) { 
@@ -75,10 +78,46 @@ public class Run {
 				e.printStackTrace();
 			}
 			
-			*/
+			
 			char c = '0';
 			byte x = (byte)c;
-			System.out.println((int)x);
+			System.out.println((int)x);*/
+			
+			MyMaze3dGenerator m = new MyMaze3dGenerator(3, 1, 3);
+			// save it to a file   
+			OutputStream out = null;
+			try {
+				out = new MyCompressorOutputStream( new FileOutputStream("1.maz"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			try {
+				out.write(m.getMaze().toByteArray());  
+				out.flush();   
+				out.close(); 
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}     
+			InputStream in = null;
+			try {
+				in = new MyDecompressorInputStream( new FileInputStream("1.maz"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}   
+			byte b[]=new byte[m.getMaze().toByteArray().length];   
+			try {
+				in.read(b);
+				in.close(); 
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}   
+			 
+			Maze3d loaded=new Maze3d(b);     
+			System.out.println(loaded.equals(m.getMaze())); 
 			
 			
 			

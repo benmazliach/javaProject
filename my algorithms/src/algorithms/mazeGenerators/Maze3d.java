@@ -371,8 +371,8 @@ public class Maze3d{
 		temp[2] = (byte) getStartPosition().getpZ();
 		//goal position
 		temp[3] = (byte) getGoalPosition().getpX();
-		temp[4] = (byte) getGoalPosition().getpX();
-		temp[5] = (byte) getGoalPosition().getpX();
+		temp[4] = (byte) getGoalPosition().getpY();
+		temp[5] = (byte) getGoalPosition().getpZ();
 		//maze size
 		temp[6] = (byte) getXSize();
 		temp[7] = (byte) getYSize();
