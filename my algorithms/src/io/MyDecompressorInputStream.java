@@ -2,14 +2,49 @@ package io;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MyDecompressorInputStream extends InputStream{
 
 	private InputStream in;
-	public MyDecompressorInputStream(){}
+	private byte[] arrayByte;
 	
 	public MyDecompressorInputStream(InputStream in) {
 		this.in = in;
+		this.arrayByte = null;
+	}
+	
+	public int readFile() throws IOException {
+		int size=0;
+		ArrayList<Byte> temp = new ArrayList<Byte>();
+		try {
+			int num = 0;
+			int i = 0;
+			while((num = this.read())!=-1)
+			{
+				temp.add((byte)num);
+				if(i%2==1)
+					size+=temp.get(i);
+				i++;
+					
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		arrayByte = new byte[size];
+		int numOfByte = 0;
+		byte numByte = 0;
+		int z = 0;//array b index
+		for (int i = 0; i < temp.size(); i++) {
+			numByte = temp.get(i++);
+			numOfByte = temp.get(i);
+			for(int j = 0;j<(numOfByte);j++)
+			{
+				arrayByte[z] = numByte;
+				z++;
+			}
+		}
+		return 0;
 	}
 	
 	@Override
@@ -41,6 +76,14 @@ public class MyDecompressorInputStream extends InputStream{
 
 	public void setIn(InputStream in) {
 		this.in = in;
+	}
+
+	public byte[] getArrayByte() {
+		return arrayByte;
+	}
+
+	public void setArrayByte(byte[] arrayByte) {
+		this.arrayByte = arrayByte;
 	}
 
 }

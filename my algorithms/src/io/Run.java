@@ -11,7 +11,7 @@ public class Run {
 		
 		public static void main(String[] args) { 
 			OutputStream out = null;
-			//byte[] b = {1,1,1,1,0,0,0,1,0,0,1,0,0,0};
+			byte[] b = {'5','1','1','1','0','0','1'};
 			try {
 				out= new FileOutputStream("ben.txt");
 			} catch (FileNotFoundException e) {
@@ -21,12 +21,11 @@ public class Run {
 			MyCompressorOutputStream Cout = null;
 			Cout = new MyCompressorOutputStream(out);
 			try {
-				Cout.write("1111111000001111111111111100".getBytes());
+				Cout.write(b);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 			try {
 				out.close();
 			} catch (IOException e) {
@@ -39,6 +38,7 @@ public class Run {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			InputStream in = null;
 			try {
 				in= new FileInputStream("ben.txt");
@@ -47,18 +47,20 @@ public class Run {
 				e.printStackTrace();
 			}
 			
-			
+			byte[] ben = null;
 			MyDecompressorInputStream Cin = null;
 			Cin = new MyDecompressorInputStream(in);
 			try {
-				int num = 0;
-				while((num = Cin.read())!=-1)
-					System.out.println(num);
+				Cin.readFile();
+				ben = Cin.getArrayByte();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
+			//System.out.println(ben.length);
+			for(int i=0;i<ben.length;i++)
+				System.out.println(ben[i]);
 			
 			try {
 				in.close();
@@ -72,8 +74,6 @@ public class Run {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
 			
 			
 			
