@@ -10,7 +10,7 @@ import java.io.OutputStream;
 public class Run {
 		
 		public static void main(String[] args) { 
-			OutputStream out = null;
+			/*OutputStream out = null;
 			byte[] b = {'5','5','1','1','1','0','0','1'};
 			try {
 				out= new FileOutputStream("ben.txt");
@@ -75,8 +75,10 @@ public class Run {
 				e.printStackTrace();
 			}
 			
-			
-			
+			*/
+			char c = '0';
+			byte x = (byte)c;
+			System.out.println((int)x);
 			
 			
 			

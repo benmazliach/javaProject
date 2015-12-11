@@ -63,6 +63,26 @@ public class Maze3d{
 	{
 		this.setMaze(maze);
 	}
+	
+	//Constructor
+	public Maze3d(byte[] arrayByte)
+	{
+		setStartPosition(new Position((int)arrayByte[0], (int)arrayByte[1], (int)arrayByte[2]));
+		setGoalPosition(new Position((int)arrayByte[3], (int)arrayByte[4], (int)arrayByte[5]));
+		this.maze = new int[(int)arrayByte[7]][(int)arrayByte[8]][(int)arrayByte[6]];
+		int index = 9;
+		for(int i=0;i<getYSize();i++)
+		{
+			for(int j=0;j<getZSize();j++)
+			{
+				for(int k=0;k<getXSize();k++)
+				{
+					changeValue(k, i, j, arrayByte[index]);
+					index++;
+				}
+			}
+		}
+	}
 
 	/**
 	 * Get maze 
@@ -370,7 +390,7 @@ public class Maze3d{
 				}
 			}
 		}
-		return null;
+		return temp;
 	}
 	
 }
