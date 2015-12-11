@@ -44,7 +44,9 @@ public class MyDecompressorInputStream extends InputStream{
 				z++;
 			}
 		}
-		return 0;
+		if(arrayByte!=null || size!=0)
+			return size;
+		return -1;
 	}
 	
 	@Override
