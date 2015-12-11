@@ -32,13 +32,13 @@ public class MyDecompressorInputStream extends InputStream{
 			e.printStackTrace();
 		}
 		arrayByte = new byte[size];
-		int numOfByte = 0;
+		int countOfByte = 0;
 		byte numByte = 0;
 		int z = 0;//array b index
 		for (int i = 0; i < temp.size(); i++) {
 			numByte = temp.get(i++);
-			numOfByte = temp.get(i);
-			for(int j = 0;j<(numOfByte);j++)
+			countOfByte = temp.get(i);
+			for(int j = 0;j<(countOfByte);j++)
 			{
 				arrayByte[z] = numByte;
 				z++;

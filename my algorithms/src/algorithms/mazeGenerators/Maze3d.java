@@ -341,4 +341,36 @@ public class Maze3d{
 		return temp;
 	}
 	
+	public byte[] toByteArray()
+	{
+		int size = getXSize() * getYSize() * getZSize() + 9;
+		byte[] temp = new byte[size];
+		//start position
+		temp[0] = (byte) getStartPosition().getpX();
+		temp[1] = (byte) getStartPosition().getpY();
+		temp[2] = (byte) getStartPosition().getpZ();
+		//goal position
+		temp[3] = (byte) getGoalPosition().getpX();
+		temp[4] = (byte) getGoalPosition().getpX();
+		temp[5] = (byte) getGoalPosition().getpX();
+		//maze size
+		temp[6] = (byte) getXSize();
+		temp[7] = (byte) getYSize();
+		temp[8] = (byte) getZSize();
+		//maze data
+		int index = 9;
+		for(int i=0;i<getYSize();i++)
+		{
+			for(int j=0;j<getZSize();j++)
+			{
+				for(int k=0;k<getXSize();k++)
+				{
+					temp[index] = (byte) returnValue(k, i, j);
+					index++;
+				}
+			}
+		}
+		return null;
+	}
+	
 }

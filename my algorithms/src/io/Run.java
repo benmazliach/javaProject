@@ -11,7 +11,7 @@ public class Run {
 		
 		public static void main(String[] args) { 
 			OutputStream out = null;
-			byte[] b = {'5','1','1','1','0','0','1'};
+			byte[] b = {'5','5','1','1','1','0','0','1'};
 			try {
 				out= new FileOutputStream("ben.txt");
 			} catch (FileNotFoundException e) {
