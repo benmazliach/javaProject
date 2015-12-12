@@ -4,6 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+/**
+*<h1>  MyDecompressorInputStream class <h1>
+*This class extends InputStream
+*This class get type of InputStream that we want to decompress from him
+* 
+*
+* @author  Ben Mazliach , Or Moshe
+* @version 1.0
+* @since   17/12/15
+*/
+
 public class MyDecompressorInputStream extends InputStream{
 
 	private InputStream in;
@@ -12,11 +23,19 @@ public class MyDecompressorInputStream extends InputStream{
 	//if true remove readFile
 	private byte[] arrayByte;
 	
+	/**
+	 * Constructor that get InputStream
+	 * @param InputStream in
+	 */
 	public MyDecompressorInputStream(InputStream in) {
 		this.in = in;
 		this.arrayByte = null;
 	}
 	
+	/**
+	 * Reads some number of bytes from the input stream and stores them into the buffer array b.
+	 * @param byte[] b
+	 */
 	@Override
 	public int read(byte[] b)
 	{
@@ -54,6 +73,11 @@ public class MyDecompressorInputStream extends InputStream{
 		return -1;
 	}
 	
+	/**
+	 * Reads some number of bytes from the input stream and stores them into the buffer array b.
+	 * @return int
+	 * @throws IOException
+	 */
 	public int readFile() throws IOException {
 		int size=0;
 		ArrayList<Byte> temp = new ArrayList<Byte>();
@@ -90,11 +114,17 @@ public class MyDecompressorInputStream extends InputStream{
 		return -1;
 	}
 	
+	/**
+	 * Reads the next byte of data from the input stream.
+	 * @return int 
+	 * @throws IOException
+	 */
 	@Override
 	public int read() throws IOException {
 		int num = 0;
 		int temp = in.read();
 		int i=1;
+		//if the number is bigger than 9 so we need to read all number still we get ','
 		while(temp!=-1)
 		{
 			if(temp>='0' &&temp<='9')
@@ -113,18 +143,33 @@ public class MyDecompressorInputStream extends InputStream{
 		return -1;
 	}
 
+	/**
+	 * Get in
+	 * @return InputStream
+	 */
 	public InputStream getIn() {
 		return in;
 	}
-
+	/**
+	 * Set in 
+	 * @param InputStream in
+	 * @return void 
+	 */
 	public void setIn(InputStream in) {
 		this.in = in;
 	}
-
+	/**
+	 * Get arrayByte 
+	 * @return byte[]
+	 */
 	public byte[] getArrayByte() {
 		return arrayByte;
 	}
-
+	/**
+	 * Set arrayByte
+	 * @param byte[] arrayByte
+	 * @return void 
+	 */
 	public void setArrayByte(byte[] arrayByte) {
 		this.arrayByte = arrayByte;
 	}

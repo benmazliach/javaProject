@@ -1,6 +1,7 @@
 package algorithms.mazeGenerators;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
 *<h1>  Maze3d class <h1>
@@ -65,6 +66,11 @@ public class Maze3d{
 		this.setMaze(maze);
 	}
 	
+	/**
+	 * Constructor that creates Maze3d
+	 * The Constructor get array of bytes and create Maze3d
+	 * @param byte[] arrayByte
+	 */
 	//Constructor
 	public Maze3d(byte[] arrayByte)
 	{
@@ -362,6 +368,10 @@ public class Maze3d{
 		return temp;
 	}
 	
+	/**
+	 * Compress the maze to byte array
+	 * @return byte[] 
+	 */
 	public byte[] toByteArray()
 	{
 		/*
@@ -396,18 +406,19 @@ public class Maze3d{
 		*/
 		ArrayList<Byte> byteMaze = new ArrayList<Byte>();
 		
+		//start position x,y,z
 		byteMaze.add((new Integer(this.getStartPosition().getpX()).byteValue()));
 		byteMaze.add((new Integer(this.getStartPosition().getpY()).byteValue()));
 		byteMaze.add((new Integer(this.getStartPosition().getpZ()).byteValue()));
-		
+		//goal position x,y,z
 		byteMaze.add((new Integer(this.getGoalPosition().getpX()).byteValue()));
 		byteMaze.add((new Integer(this.getGoalPosition().getpY()).byteValue()));
 		byteMaze.add((new Integer(this.getGoalPosition().getpZ()).byteValue()));
-		
+		//size x,y,z
 		byteMaze.add((new Integer(this.maze[0][0].length).byteValue()));//x
 		byteMaze.add((new Integer(this.maze.length).byteValue()));//y
 		byteMaze.add((new Integer(this.maze[0].length).byteValue()));//z
-		
+		//maze data
 		for (int i = 0; i < maze.length; i++) {
 			for (int j = 0; j < maze[0].length; j++) {
 				for (int k = 0; k < maze[0][0].length; k++) {
@@ -415,7 +426,7 @@ public class Maze3d{
 				}
 			}
 		}
-		
+		//Compress from ArrayList to byte array
 		byte[] CommpressedMaze = new byte[byteMaze.size()];
 		
 		for (int i = 0; i < byteMaze.size(); i++) {
@@ -425,6 +436,11 @@ public class Maze3d{
 		return CommpressedMaze;
 	}
 	
+	/**
+	 * Indicates maze3d is "equal to" this one.
+	 * @param Maze3d m
+	 * @return boolean
+	 */
 	public boolean equals(Maze3d m) {
 		if(this.getXSize()!=m.getXSize()||this.getYSize()!=m.getYSize()||this.getZSize()!=m.getZSize())
 			return false;
@@ -437,6 +453,47 @@ public class Maze3d{
 			}
 		}
 		return true;
+	}
+	
+	/**
+	 * Prints the maze
+	 */
+	public void printMaze()
+	{
+		System.out.println("the maze:");
+		for (int i = 0; i < this.getYSize(); i++)
+		{
+			System.out.println("maze[" + i + "][][]: ");
+			for (int j = 0; j < this.getZSize(); j++)
+			{
+				System.out.print("maze[" + i + "][" +j + "][]: ");
+				for (int k = 0; k < this.getXSize(); k++)
+				{
+					System.out.print(returnValue(k, i, j) + " ");
+				}
+				System.out.println("");
+			}
+			System.out.println("\n");
+		}
+	}
+	
+	/**
+	 * changes the position value
+	 * if the parameters are proper
+	 * @param Position pos , int value
+	 * @return int 
+	 */
+	public void setPositionValue(Position pos, int value)
+	{//check!!
+		Scanner s = new Scanner(System.in);
+		
+		while(!(value == 0 || value == 1))
+		{
+			System.out.println("enter:");
+			value = s.nextInt();
+		}		
+			changeValue(this.getXSize(), this.getYSize(), this.getZSize(), value);
+		s.close();
 	}
 	
 }
