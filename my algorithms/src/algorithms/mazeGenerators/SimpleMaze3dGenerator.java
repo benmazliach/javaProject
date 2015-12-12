@@ -69,7 +69,7 @@ public class SimpleMaze3dGenerator extends CommonMaze3dGenerator {
 		int z2 = rand.nextInt(z); 
 		
 		//We checks that the start position and the goal position are not same
-		while((x1==x2)||(y1==y2)||(z1==z2))
+		while((x1==x2)&&(y1==y2)&&(z1==z2))
 		{
 			x2 = rand.nextInt(x); 
 			y2 = rand.nextInt(y); 

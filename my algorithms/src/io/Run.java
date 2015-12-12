@@ -13,78 +13,6 @@ import algorithms.mazeGenerators.MyMaze3dGenerator;
 public class Run {
 		
 		public static void main(String[] args) { 
-			/*OutputStream out = null;
-			byte[] b = {'5','5','1','1','1','0','0','1'};
-			try {
-				out= new FileOutputStream("ben.txt");
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			MyCompressorOutputStream Cout = null;
-			Cout = new MyCompressorOutputStream(out);
-			try {
-				Cout.write(b);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				out.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Cout.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			InputStream in = null;
-			try {
-				in= new FileInputStream("ben.txt");
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			byte[] ben = null;
-			MyDecompressorInputStream Cin = null;
-			Cin = new MyDecompressorInputStream(in);
-			try {
-				Cin.readFile();
-				ben = Cin.getArrayByte();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			//System.out.println(ben.length);
-			for(int i=0;i<ben.length;i++)
-				System.out.println(ben[i]);
-			
-			try {
-				in.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Cin.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			char c = '0';
-			byte x = (byte)c;
-			System.out.println((int)x);
-			
-			*/
-			
 			MyMaze3dGenerator m = new MyMaze3dGenerator(10, 1, 3);
 			// save it to a file   
 			OutputStream out = null;
@@ -115,8 +43,5 @@ public class Run {
 			}
 			Maze3d loaded=new Maze3d(b);     
 			System.out.println(loaded.equals(m.getMaze())); 
-		
-			
-			
 		}
 }
