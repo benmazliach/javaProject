@@ -13,7 +13,7 @@ import controller.Command;
 import controller.MyCommand;
 
 public class RunPartB {
-		
+		/**//**//**//**//**/
 		public static void main(String[] args) { 
 			HashMap<String, Command> c = new HashMap<String, Command>();
 			c.put("Print 55", new MyCommand("55"));
