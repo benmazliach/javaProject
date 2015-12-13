@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import controller.Command;
 
-public class CLI extends Thread{
+public class CLI implements Runnable {
 	
 	private BufferedReader in;
 	private PrintWriter out;

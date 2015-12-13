@@ -38,6 +38,8 @@ public class RunPartB {
 				e.printStackTrace();
 			}
 			CLI d = new CLI(in, out, c);
-			d.start();
+			Thread t = new Thread(d);
+			t.start();
+			out.close();
 		}
 }
